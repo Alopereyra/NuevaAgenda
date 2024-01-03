@@ -8,12 +8,11 @@ import { AppComponent } from './app.component';
 import { ListaPersonasComponent } from './components/lista-personas/lista-personas.component';
 import { AgregarEditarPersonasComponent } from './components/agregar-editar-personas/agregar-editar-personas.component';
 
+//Modulos
+import { SharedModule } from './shared/shared.module';
 
-//Angular Material
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatCardModule} from '@angular/material/card';
-import {MatTableModule} from '@angular/material/table';
+
+
 
 
 @NgModule({
@@ -21,14 +20,13 @@ import {MatTableModule} from '@angular/material/table';
     AppComponent,
     ListaPersonasComponent,
     AgregarEditarPersonasComponent
+
   ],
+
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatTableModule,
+    SharedModule   
 
   ],
   providers: [],
