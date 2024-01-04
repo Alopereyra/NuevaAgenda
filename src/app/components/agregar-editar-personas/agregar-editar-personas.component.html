@@ -1,11 +1,70 @@
 <p>agregar-editar-personas works!</p>
 
 <h2 mat-dialog-title>Agregar Persona</h2>
-<mat-dialog-content class="mat-typography">
-  
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button (click)="cancelar()">Cancelar</button>
-  <button mat-button cdkFocusInitial>Aceptar</button>
-</mat-dialog-actions>
+
+<form [formGroup]="form" (ngSubmit)="addEditPersona()">
+
+    <mat-dialog-content class="mat-typography">
+        <div class="row">
+            <div class="column">
+                <mat-form-field appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input matInput placeholder="Ingrese Nombre">
+                </mat-form-field>
+            </div>
+        
+            <div class="column">
+                <mat-form-field appearance="fill">
+                <mat-label>Apellido</mat-label>
+                <input matInput placeholder="Ingrese Apellido">
+                </mat-form-field>
+            </div>
+      </div>
+      <div class="row">
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Correo</mat-label>
+                <input matInput placeholder="Ingrese Correo">
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+            <mat-form-field>
+                <mat-label>Tipo Documento</mat-label>
+                <mat-select>
+                    <mat-option *ngFor="let item of tipoDocumento" [value]="item">
+                        {{item}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div class="column">
+            <mat-form-field appearance="fill">
+                <mat-label>Documento</mat-label>
+                <input matInput placeholder="Ingrese Documento">
+            </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+            <mat-form-field class="example-full-width">
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker touchUi #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+      </div>
+    
+    
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button type="button" mat-button (click)="cancelar()">Cancelar</button>
+      <button type="submit" mat-button cdkFocusInitial>Aceptar</button>
+    </mat-dialog-actions>
+
+</form>
+
+
 
