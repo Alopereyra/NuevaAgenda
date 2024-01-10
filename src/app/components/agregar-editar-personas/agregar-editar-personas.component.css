@@ -10,3 +10,19 @@ mat-form-field {
     flex: 50%;
     margin: 0px 5px;
 }
+
+.error {
+    color: #b0304b;
+    margin-top: -10px;
+    font-size: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.spinner {
+    margin-top: 20px;
+    margin-right: 30px;
+}

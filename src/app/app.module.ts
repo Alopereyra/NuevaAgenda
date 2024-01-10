@@ -10,6 +10,7 @@ import { AgregarEditarPersonasComponent } from './components/agregar-editar-pers
 
 //Modulos
 import { SharedModule } from './shared/shared.module';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 
 
@@ -29,7 +30,11 @@ import { SharedModule } from './shared/shared.module';
     SharedModule   
 
   ],
-  providers: [],
+  providers: [
+    {
+      provide: MAT_DATE_LOCALE, useValue:'es' //Para poner en español el calendario
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
