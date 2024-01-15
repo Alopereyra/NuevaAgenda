@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class HomeComponent implements OnInit {
-  userLoginOn:boolean=false; //El usuario al entrar por primera vez no va a estar autentificado
+  //userLoginOn:boolean=false; //El usuario al entrar por primera vez no va a estar autentificado
   
 
 

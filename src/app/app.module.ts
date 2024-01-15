@@ -21,7 +21,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
     ListaPersonasComponent,
     AgregarEditarPersonasComponent,
     LoginComponent,
-    HomeComponent
+    //HomeComponent
 
   ],
 

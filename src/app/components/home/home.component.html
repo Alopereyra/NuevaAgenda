@@ -1,26 +1,30 @@
 <p>home works!</p>
-<mat-toolbar color="primary">
-    <!-- <span>Mi Agenda</span> -->
-
+<!--<mat-toolbar color="primary">
+    <!-- <span>Mi Agenda</span> ->
+     <span class="example-spacer" ></span> <!-- Para centrar los botones ->
     <nav class="navbar navbar-expand-sm"  style="display: flex; justify-content: space-around; ">
-  
+        
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" href=""> Inicio </a>
+                <a class="nav-link active" routerLink="/dashboard" href=""> Inicio </a>
             </li>
+            
             <li class="nav-item">
-                <a class="nav-link" href="/proyectoPaciente"> Pacientes </a>
+                <a class="nav-link" routerLink="/dashboard/listaPacientes" href=""> Pacientes </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/turnos"> Turno </a>
+            
+            <li routerLink="/logout" class="nav-item"> 
+                <a class="nav-link" href="/login"> Logout </a>
             </li>
-            <li *ngIf="!userLoginOn" class="nav-item"> 
-                <a class="nav-link" href="/login"> Login </a>
-            </li>
-            <li *ngIf="userLoginOn" class="nav-item"> 
-                <a class="nav-link" href="/cerrarSesion"> Cerrar Sesion </a>
-            </li>
+                                    
         </ul>
-    
     </nav>
-</mat-toolbar>
+    <span class="example-spacer" ></span> <!-- Para centrar los botones -->
+    
+       <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>Logout</mat-icon>
+</mat-toolbar> -->
+<h1 style="text-align: center; margin-top: 10px;" >Bienvenidos a su agenda de Pacientes</h1>
+<div class="home" >
+    <img src="../../../assets/img/bienvenida2.bmp" width="45%">
+</div>

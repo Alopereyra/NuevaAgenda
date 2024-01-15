@@ -60,7 +60,7 @@ export class ListaPersonasComponent implements OnInit, AfterViewInit{
       this.dataSource.paginator.firstPage();
     }
   }
-
+ 
   agregarEditPersona(id?: number) {
     const dialogRef = this.dialog.open(AgregarEditarPersonasComponent, {
       width: '550px',

@@ -14,7 +14,7 @@ import { PersonaService } from 'src/app/services/paciente.service';
 export class AgregarEditarPersonasComponent implements OnInit {
   form: FormGroup;
   minDate: Date; // Nueva propiedad para la fecha mínima
-  horasDisponibles: string[] = ['08:00', '09:00', '10:00', '11:00', '12:00']; // Puedo personalizar los horas disponibles
+  horasDisponibles: string[] = ['08:00', '08:30', '09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30']; // Puedo personalizar los horas disponibles
   loading: boolean = false;
   operacion: string = 'Agragar ';
   id: number | undefined;

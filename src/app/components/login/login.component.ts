@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit{
 form: FormGroup;
 loading = false;
 
-  constructor (private fb: FormBuilder, private _snackBar: MatSnackBar) {
+  constructor (private fb: FormBuilder, private _snackBar: MatSnackBar, private router: Router) {
     this.form = this.fb.group({
       usuario: ['', Validators.required],
       password: ['', Validators.required],
@@ -34,7 +35,7 @@ loading = false;
     } else {
       // Mostramos error
       this.error();
-      this.form.reset();
+      this.form.reset();// Elimina los datos de Usuario y Contraseña
     }
   }
 
@@ -49,8 +50,8 @@ loading = false;
     this.loading = true;
     setTimeout(() => {
 
-      //falta redireccionar al Inicio
-      this.loading = false;
+      //una vez que iniciamos bien el login nos dirige a dashboard
+      this.router.navigate(['dashboard']);
     }, 1500);
   }
 
