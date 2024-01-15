@@ -1,10 +1,13 @@
+
+
 export interface Persona {
     id?: number;
     nombre: string;
     apellido: string;
     correo: string;
-    tipoDocumento: string;
+    detalle: string;
     documento: number;
-    fechaNacimiento: Date;
+    fechaTurno: Date;
+    horaTurno: string;
     
 }

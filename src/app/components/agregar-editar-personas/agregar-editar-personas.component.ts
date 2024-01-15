@@ -12,23 +12,24 @@ import { PersonaService } from 'src/app/services/paciente.service';
 })
 
 export class AgregarEditarPersonasComponent implements OnInit {
-  tipoDocumento: string[] = ['DNI', 'Libreta Civica', 'Pasaporte'];
   form: FormGroup;
-  maxDate: Date;
+  minDate: Date; // Nueva propiedad para la fecha mínima
+  horasDisponibles: string[] = ['08:00', '09:00', '10:00', '11:00', '12:00']; // Puedo personalizar los horas disponibles
   loading: boolean = false;
   operacion: string = 'Agragar ';
   id: number | undefined;
 
   constructor (public dialogRef: MatDialogRef<AgregarEditarPersonasComponent>,
     private fb: FormBuilder, private _personaService: PersonaService, private _snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) public data: any) {
-      this.maxDate = new Date ();
+      this.minDate = new Date(); // Calcular la fecha mínima (hoy)
       this.form = this.fb.group({
         nombre: ['', [Validators.required, Validators.maxLength(20)]],
         apellido: ['', [Validators.required, Validators.maxLength(20)]],
         correo: ['', [Validators.required, Validators.email]],
-        tipoDocumento: [null, Validators.required],
+        detalle: ['', [Validators.required, Validators.maxLength(30)]],
         documento: [null,[ Validators.required, Validators.pattern("^[0-9]+$")]],
-        fechaNacimiento: [null, Validators.required],
+        fechaTurno: [new Date(), Validators.required], // establecer la fecha actual como valor por defecto
+        horaTurno: [null, Validators.required],
 
       })
       this.id = data.id;
@@ -51,9 +52,10 @@ export class AgregarEditarPersonasComponent implements OnInit {
         nombre: data.nombre,
         apellido: data.apellido,
         correo: data.correo,
-        tipoDocumento: data.tipoDocumento,
+        detalle: data.detalle,
         documento: data.documento,
-        fechaNacimiento: new Date(data.fechaNacimiento), // Arreglo fecha al editar
+        fechaTurno: new Date(data.fechaTurno), // Arreglo fecha al editar
+        horaTurno: data.horaTurno
       })
     })
 
@@ -69,20 +71,19 @@ export class AgregarEditarPersonasComponent implements OnInit {
       nombre: this.form.value.nombre,
       apellido: this.form.value.apellido,
       correo: this.form.value.correo,
-      tipoDocumento: this.form.value.tipoDocumento,
+      detalle: this.form.value.detalle,
       documento: this.form.value.documento,
-      fechaNacimiento: this.form.value.fechaNacimiento.toISOString().slice(0,10)
+      fechaTurno: this.form.value.fechaTurno.toISOString().slice(0, 10),
+      horaTurno: this.form.value.horaTurno
     };
 
     this.loading = true;
 
     if(this.id == undefined) {
       // Es agregar Persona
-      setTimeout(() => {
-        this._personaService.addPersona(persona).subscribe(() => {
+       this._personaService.addPersona(persona).subscribe(() => {
           this.mensajeAgregado('agregada');
-        })
-      }, 1000);
+        });
     } else {
       // Es Editar Persona
       this._personaService.updataPersona(this.id, persona).subscribe(data => {

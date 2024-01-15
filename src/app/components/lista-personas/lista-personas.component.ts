@@ -9,16 +9,6 @@ import { PersonaService } from 'src/app/services/paciente.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 
-// const listPersonas: Persona [] = [
-//   {nombre: "Tomas", apellido: "Perez", correo: "tperez@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date},
-//   {nombre: "AAAAA", apellido: "AAAAA", correo: "AAAAA@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date},
-//   {nombre: "BBBBB", apellido: "BBBBB", correo: "BBBBB@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date},
-//   {nombre: "CCCCC", apellido: "CCCCC", correo: "CCCCC@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date},
-//   {nombre: "DDDDD", apellido: "DDDDD", correo: "DDDDD@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date},
-//   {nombre: "EEEEE", apellido: "EEEEE", correo: "EEEEE@mail.com", tipoDocumento: "DNI", documento: 23568923, fechaNacimiento: new Date}
-
-// ]
-
 @Component({
   selector: 'app-lista-personas',
   templateUrl: './lista-personas.component.html',
@@ -26,9 +16,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 
 export class ListaPersonasComponent implements OnInit, AfterViewInit{
-  
 
-  displayedColumns: string[] = ['nombre', 'apellido', 'correo', 'tipoDocumento', 'documento', 'fechaNacimiento', 'acciones'];
+  userLoginOn:boolean=false;
+
+  displayedColumns: string[] = ['nombre', 'apellido', 'correo', 'detalle', 'documento', 'fechaTurno', 'horaTurno', 'acciones'];
   dataSource: MatTableDataSource<Persona>;
   loading: boolean = false;
 
@@ -92,8 +83,6 @@ export class ListaPersonasComponent implements OnInit, AfterViewInit{
       this.mensajeBorrado();
     })
   }
-
-  
 
   mensajeBorrado() {
     this._snackBar.open('La persona fue borrada con Exito', " ", {
