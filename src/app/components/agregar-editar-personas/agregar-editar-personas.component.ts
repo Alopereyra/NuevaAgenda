@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Persona } from 'src/app/interfaces/persona';
 import { PersonaService } from 'src/app/services/paciente.service';
 
+
+
 @Component({
   selector: 'app-agregar-editar-personas',
   templateUrl: './agregar-editar-personas.component.html',
@@ -86,13 +88,42 @@ export class AgregarEditarPersonasComponent implements OnInit {
         });
     } else {
       // Es Editar Persona
-      this._personaService.updataPersona(this.id, persona).subscribe(data => {
+      this._personaService.updataPersona(this.id, persona).subscribe(_data => {
         this.mensajeAgregado('actualizada');
       })
     }
     this.loading = false;
     this.dialogRef.close(true);
+
   }
+
+  // verificarTurno(turno: any): void {
+  //   if (this.esTurnoDuplicado(turno)) {
+  //     throw new Error('El turno está duplicado.');
+  //   }
+
+  //   if (this.esTurnoSuperpuesto(turno)) {
+  //     throw new Error('El turno se superpone con otro turno.');
+  //   }
+
+  // }
+
+  // esTurnoDuplicado(turno: any): boolean {
+  //   return this.turnos.some(
+  //     t => t.fechaTurno === turno.fechaTurno && t.horaTurno === turno.horaTurno
+  //   );
+  // }
+
+  // esTurnoSuperpuesto(turno: any): boolean {
+  //   return this.turnos.some(t =>
+  //     t.fechaTurno === turno.fechaTurno &&
+  //     (
+  //       (t.horaTurno <= turno.horaTurno && turno.horaTurno < t.horaTurno + t.duracion) ||
+  //       (turno.horaTurno <= t.horaTurno && t.horaTurno < turno.horaTurno + turno.duracion)
+  //     )
+  //   );
+  // }
+
 
   mensajeAgregado(operacion: string) {
     this._snackBar.open(`La persona fue ${operacion} con Exito`, " ", {
